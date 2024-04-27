@@ -6,6 +6,46 @@ import { CartContext } from "../AppContext/AppProvider";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaBars } from "react-icons/fa6";
 
+function AuthLinks({ sessionStatus, userName }) {
+  if (sessionStatus === "authenticated") {
+    return (
+      <>
+        <Link
+          href={"/profile"}
+          className=" style_btn hover:bg-green-600 transition-all "
+        >
+          Hello {userName}
+        </Link>
+        <button
+          type="button"
+          className="style_btn hover:bg-green-600"
+          onClick={() => signOut()}
+        >
+          Sign Out
+        </button>
+      </>
+    );
+  }
+  if (sessionStatus == "unauthenticated") {
+    return (
+      <>
+        <Link
+          href={"/login"}
+          className=" style_btn hover:bg-green-600 transition-all "
+        >
+          Login
+        </Link>
+        <Link
+          href={"/register"}
+          className=" style_btn hover:bg-green-600 transition-all "
+        >
+          Register
+        </Link>
+      </>
+    );
+  }
+}
+
 const NavBar = () => {
   const session = useSession();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -17,45 +57,6 @@ const NavBar = () => {
     userName = userName.split(" ")[0];
   }
 
-  function AuthLinks({ sessionStatus, userName }) {
-    return (
-      <>
-        {sessionStatus === "authenticated" && (
-          <>
-            <Link
-              href={"/profile"}
-              className=" style_btn hover:bg-green-600 transition-all "
-            >
-              Hello {userName}
-            </Link>
-            <button
-              type="button"
-              className="style_btn hover:bg-green-600"
-              onClick={() => signOut()}
-            >
-              Sign Out
-            </button>
-          </>
-        )}
-        {sessionStatus == "unauthenticated" && (
-          <>
-            <Link
-              href={"/login"}
-              className=" style_btn hover:bg-green-600 transition-all "
-            >
-              Login
-            </Link>
-            <Link
-              href={"/register"}
-              className=" style_btn hover:bg-green-600 transition-all "
-            >
-              Register
-            </Link>
-          </>
-        )}
-      </>
-    );
-  }
   return (
     <header>
       <div className="flex justify-between gap-2 md:hidden p-8 items-center ">

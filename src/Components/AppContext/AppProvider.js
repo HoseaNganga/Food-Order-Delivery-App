@@ -18,7 +18,7 @@ export function cartProductPrice(cartProduct) {
   return price;
 }
 
-const AppProvider = ({ children }) => {
+export function AppProvider({ children }) {
   const [cartProducts, setCartProducts] = useState([]);
   const localStorage =
     typeof window !== "undefined" ? window.localStorage : null;
@@ -76,6 +76,4 @@ const AppProvider = ({ children }) => {
       </CartContext.Provider>
     </SessionProvider>
   );
-};
-
-export default AppProvider;
+}

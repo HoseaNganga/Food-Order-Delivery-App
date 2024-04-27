@@ -2,7 +2,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/Components/NavBar/NavBar";
 import Footer from "@/Components/Footer/Footer";
-import AppProvider from "@/Components/AppContext/AppProvider";
+import { AppProvider } from "@/Components/AppContext/AppProvider";
 import { Toaster } from "react-hot-toast";
 
 const roboto = Roboto({
