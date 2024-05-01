@@ -18,11 +18,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${roboto.className} w-full min-h-screen text-xl p-8 `}>
+      <body className={`${roboto.className} w-full min-h-screen text-xl `}>
         <AppProvider>
           <Toaster />
           <NavBar />
-          {children}
+          <main className='p-8'>
+  {children}
+  </main>
           <Footer />
         </AppProvider>
       </body>
